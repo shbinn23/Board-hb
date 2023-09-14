@@ -48,6 +48,10 @@ dependencies {
 
 	// MyBatis와 Spring Boot 통합 테스트를 위한 라이브러리
 	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:2.3.1'
+
+	// JSP
+	implementation "org.apache.tomcat.embed:tomcat-embed-jasper"
+	implementation 'javax.servlet:jstl:1.2'
 }
 
 
