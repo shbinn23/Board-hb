@@ -13,7 +13,7 @@
     $(document).on('click', '#btnWriteForm', function(e) {
         console.log("클릭 이벤트 확인")
         e.preventDefault();
-        location.href = "${pageContext.request.contextPath}/board/boardForm";
+        location.href = "${pageContext.request.contextPath}/board/writeForm";
     });
 
     function fn_contentView(bid){

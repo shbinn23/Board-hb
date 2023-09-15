@@ -53,7 +53,7 @@
 <body>
 <article>
     <div class="container" role="main">
-        <h2>board Form</h2>
+        <h2>Write Form</h2>
         <form:form name="form" id="form" role="form" modelAttribute="boardVO" method="post" action="${pageContext.request.contextPath}/board/saveBoard">
             <form:hidden path="bid" />
             <input type="hidden" name="mode" />

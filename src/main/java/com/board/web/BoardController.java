@@ -34,9 +34,9 @@ public class BoardController {
      * @param model 모델 객체
      * @return 글 작성 페이지 뷰 페이지 이름
      */
-    @RequestMapping("/boardForm")
-    public String boardForm(@ModelAttribute("boardVO") BoardVO vo, Model model) {
-        return "board/boardForm";
+    @GetMapping("/writeForm")
+    public String writeForm(@ModelAttribute("boardVO") BoardVO vo, Model model) {
+        return "board/writeForm";
     }
 
     /**
@@ -48,7 +48,7 @@ public class BoardController {
      * @return 게시글 리스트 페이지로 리다이렉트
      * @throws Exception 예외 처리
      */
-    @RequestMapping(value = "/saveBoard", method = RequestMethod.POST)
+    @PostMapping("/saveBoard")
     public String saveBoard(@ModelAttribute("boardVO") BoardVO boardVO,
                             @RequestParam("mode") String mode,
                             RedirectAttributes rttr) throws Exception {
