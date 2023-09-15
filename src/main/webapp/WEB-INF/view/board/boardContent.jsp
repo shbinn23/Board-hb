@@ -6,54 +6,29 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>board</title>\
+    <title>board</title>
+    <script>
+        // 목록으로 이동
+        $(document).on('click', '#btnList', function(){
+            location.href = "${pageContext.request.contextPath}/board/getBoardList";
+        });
+
+        // 수정 버튼 클릭 이벤트
+        $(document).on('click', '#btnUpdate', function(){
+            var url = "${pageContext.request.contextPath}/board/editForm";
+            url = url + "?bid="+${boardContent.bid};
+            url = url + "&mode=edit";
+            location.href = url;
+        });
+
+        // 삭제 버튼 클릭 이벤트
+        $(document).on('click', '#btnDelete', function(){
+            var url = "${pageContext.request.contextPath}/board/deleteBoard";
+            url = url + "?bid=" + ${boardContent.bid};
+            location.href = url;
+        });
+    </script>
 </head>
-
-<script>
-
-$(document).ready(function () {
-    // 목록으로 이동 버튼 클릭 이벤트
-    //목록으로 이동 이벤트
-
-    $(document).on('click', '#btnList', function(){
-
-        location.href = "${pageContext.request.contextPath}/board/getBoardList";
-
-    });
-
-
-
-    //수정 버튼 클릭 이벤트
-
-    $(document).on('click', '#btnUpdate', function(){
-
-        var url = "${pageContext.request.contextPath}/board/editForm";
-
-        url = url + "?bid="+${boardContent.bid};
-
-        url = url + "&mode=edit";
-
-
-
-        location.href = url;
-
-    });
-
-    //삭제 버튼 클릭 이벤트
-
-    $(document).on('click', '#btnDelete', function(){
-
-        var url = "${pageContext.request.contextPath}/board/deleteBoard";
-
-        url = url + "?bid=" + ${boardContent.bid};
-
-        location.href = url;
-
-    });
-});
-
-</script>
-
 <body>
 <article>
     <div class="container" role="main">
@@ -66,7 +41,7 @@ $(document).ready(function () {
             <div class="board_content">${boardContent.content}</div>
             <div class="board_tag">TAG : <c:out value="${boardContent.tag}"/></div>
         </div>
-        <div style="margin-top: 20px">
+        <div style="margin-top : 20px">
             <button type="button" class="btn btn-sm btn-primary" id="btnUpdate">수정</button>
             <button type="button" class="btn btn-sm btn-primary" id="btnDelete">삭제</button>
             <button type="button" class="btn btn-sm btn-primary" id="btnList">목록</button>

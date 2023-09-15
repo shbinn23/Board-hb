@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/WEB-INF/view/layout/header.jsp" />
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,9 +16,9 @@
         location.href = "${pageContext.request.contextPath}/board/boardForm";
     });
 
-    function fn_contentView(bid) {
+    function fn_contentView(bid){
         var url = "${pageContext.request.contextPath}/board/getBoardContent";
-        url = url + "?bid=" + bid
+        url = url + "?bid="+bid;
         location.href = url;
     }
 
@@ -59,15 +60,15 @@
                         <c:when test="${not empty boardList}">
                             <c:forEach var="list" items="${boardList}" varStatus="loop">
                                 <tr>
-                                    <td><c:out value="${list.bid}"></c:out></td>
+                                    <td><c:out value="${list.bid}"/></td>
                                     <td>
                                         <a href="#" onClick="fn_contentView(<c:out value="${list.bid}"/>)">
-                                            <c:out value="${list.title}" />
+                                            <c:out value="${list.title}"/>
                                         </a>
                                     </td>
-                                    <td><c:out value="${list.reg_id}" /></td>
-                                    <td><c:out value="${list.view_cnt}" /></td>
-                                    <td><c:out value="${list.reg_dt}" /></td>
+                                    <td><c:out value="${list.reg_id}"/></td>
+                                    <td><c:out value="${list.view_cnt}"/></td>
+                                    <td><c:out value="${list.reg_dt}"/></td>
                                 </tr>
                             </c:forEach>
                         </c:when>
@@ -81,7 +82,5 @@
         </div>
     </div>
 </article>
-
-</div>
 </body>
 </html>
