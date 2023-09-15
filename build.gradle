@@ -28,6 +28,11 @@ dependencies {
 	// MyBatis와 Spring Boot를 통합하는 라이브러리
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.1'
 
+	// JSP
+	implementation "org.apache.tomcat.embed:tomcat-embed-jasper"
+	implementation 'javax.servlet:jstl:1.2'
+	implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'  /* Log4JDBC */
+
 	// 컴파일 시만 필요한 Lombok 라이브러리
 	compileOnly 'org.projectlombok:lombok'
 
@@ -48,10 +53,6 @@ dependencies {
 
 	// MyBatis와 Spring Boot 통합 테스트를 위한 라이브러리
 	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:2.3.1'
-
-	// JSP
-	implementation "org.apache.tomcat.embed:tomcat-embed-jasper"
-	implementation 'javax.servlet:jstl:1.2'
 
 //	compile group: 'org.bgee.log4jdbc-log4j2', name: 'log4jdbc-log4j2-jdbc4.1', version: '1.16'
 

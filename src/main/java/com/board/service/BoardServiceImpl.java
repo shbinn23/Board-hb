@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 @Service
 public class BoardServiceImpl implements BoardService{
@@ -16,5 +18,10 @@ public class BoardServiceImpl implements BoardService{
     @Override
     public List<BoardVO> getBoardList() {
         return boardDAO.getBoardList();
+    }
+
+    @Override
+    public int insertBoard(BoardVO boardVO) {
+        return boardDAO.insertBoard(boardVO);
     }
 }

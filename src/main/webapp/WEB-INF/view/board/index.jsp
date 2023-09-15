@@ -1,22 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<jsp:include page="/WEB-INF/view/layout/header.jsp" />
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Board List</title>
+
     <style>
         body {
             padding-top: 70px;
             padding-bottom: 30px;
         }
     </style>
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
-    <script src="/bootstrap/js/bootstrap.js"></script>
 </head>
 
 <script>
     $(document).on('click', '#btnWriteForm', function(e) {
+        console.log("클릭 이벤트 확인")
         e.preventDefault();
         location.href = "${pageContext.request.contextPath}/board/boardForm";
     });
@@ -28,6 +29,7 @@
         <div class="table-responsive">
             <div class="container">
                 <h2>Board List</h2>
+                <p>Context Path: ${pageContext.request.contextPath}</p>
                 <table class="table table-striped table-sm">
                     <colgroup>
                         <col style="width: 5%;" />
