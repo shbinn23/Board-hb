@@ -1,0 +1,43 @@
+/* 전체 페이지 설정 */
+body {
+    padding-top: 70px;
+    padding-bottom: 30px;
+}
+
+/* 게시판 타이틀 스타일 */
+.board_title {
+    font-weight: 700;
+    font-size: 22pt;
+    margin: 10pt;
+}
+
+/* 게시판 정보 박스 스타일 */
+.board_info_box {
+    color: #6B6B6B;
+    margin: 10pt;
+}
+
+/* 게시물 작성자 스타일 */
+.board_author {
+    font-size: 10pt;
+    margin-right: 10pt;
+}
+
+/* 게시물 날짜 스타일 */
+.board_date {
+    font-size: 10pt;
+}
+
+/* 게시물 내용 스타일 */
+.board_content {
+    color: #444343;
+    font-size: 12pt;
+    margin: 10pt;
+}
+
+/* 게시물 태그 스타일 */
+.board_tag {
+    font-size: 11pt;
+    margin: 10pt;
+    padding-bottom: 10pt;
+}

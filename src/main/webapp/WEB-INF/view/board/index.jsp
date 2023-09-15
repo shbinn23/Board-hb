@@ -5,14 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Board List</title>
-
-    <style>
-        body {
-            padding-top: 70px;
-            padding-bottom: 30px;
-        }
-    </style>
+    <title>Root URL Test</title>
 </head>
 
 <script>
@@ -21,6 +14,15 @@
         e.preventDefault();
         location.href = "${pageContext.request.contextPath}/board/boardForm";
     });
+
+    function fn_contentView(bid) {
+        var url = "${pageContext.request.contextPath}/board/getBoardContent";
+        url = url + "?bid=" + bid
+        location.href = url;
+    }
+
+    var rootUrl = window.location.origin;
+    console.log("Root URL: " + rootUrl);
 </script>
 
 <body>
@@ -57,8 +59,12 @@
                         <c:when test="${not empty boardList}">
                             <c:forEach var="list" items="${boardList}" varStatus="loop">
                                 <tr>
-                                    <th scope="row"><c:out value="${loop.index}" /></th>
-                                    <td><c:out value="${list.title}" /></td>
+                                    <td><c:out value="${list.bid}"></c:out></td>
+                                    <td>
+                                        <a href="#" onClick="fn_contentView(<c:out value="${list.bid}"/>)">
+                                            <c:out value="${list.title}" />
+                                        </a>
+                                    </td>
                                     <td><c:out value="${list.reg_id}" /></td>
                                     <td><c:out value="${list.view_cnt}" /></td>
                                     <td><c:out value="${list.reg_dt}" /></td>

@@ -13,4 +13,10 @@ public interface BoardService {
     public List<BoardVO> getBoardList();
 
     public int insertBoard(BoardVO boardVO);
+
+    public BoardVO getBoardContent(int bid);
+
+    public void updateBoard(BoardVO boardVO);
+
+    public void deleteBoard(int bid);
 }

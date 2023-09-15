@@ -22,39 +22,19 @@ repositories {
 }
 
 dependencies {
-	// Spring Boot 웹 애플리케이션 개발에 필요한 라이브러리
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-
-	// MyBatis와 Spring Boot를 통합하는 라이브러리
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.1'
-
-	// JSP
 	implementation "org.apache.tomcat.embed:tomcat-embed-jasper"
 	implementation 'javax.servlet:jstl:1.2'
-	implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'  /* Log4JDBC */
-
-	// 컴파일 시만 필요한 Lombok 라이브러리
+	implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
+	implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.6'
 	compileOnly 'org.projectlombok:lombok'
-
-	// 개발 도구로만 필요한 Spring Boot DevTools 라이브러리
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-
-	// 런타임 시에만 필요한 MySQL JDBC 드라이버 라이브러리
 	runtimeOnly 'com.mysql:mysql-connector-j'
-
-	// Spring Boot 설정 프로세서를 사용하는 라이브러리
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-
-	// 컴파일 시에만 필요한 Lombok 라이브러리의 Annotation Processor
 	annotationProcessor 'org.projectlombok:lombok'
-
-	// Spring Boot 테스트 라이브러리
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-
-	// MyBatis와 Spring Boot 통합 테스트를 위한 라이브러리
 	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:2.3.1'
-
-//	compile group: 'org.bgee.log4jdbc-log4j2', name: 'log4jdbc-log4j2-jdbc4.1', version: '1.16'
 
 	configurations {
 		compileOnly {
@@ -62,11 +42,9 @@ dependencies {
 		}
 		all {
 			exclude group: 'org.apache.logging.log4j', module: 'log4j-to-slf4j'
-			//exclude group: 'ch.qos.logback', module: 'logback-classic'
 		}
 	}
 }
-
 
 tasks.named('test') {
 	useJUnitPlatform()

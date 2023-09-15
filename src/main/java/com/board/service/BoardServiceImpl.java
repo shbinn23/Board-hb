@@ -22,6 +22,26 @@ public class BoardServiceImpl implements BoardService{
 
     @Override
     public int insertBoard(BoardVO boardVO) {
+        String cateCd = "태그";
+        boardVO.setCate_cd(cateCd);
         return boardDAO.insertBoard(boardVO);
+    }
+
+    @Override
+    public BoardVO getBoardContent(int bid) {
+        boardDAO.updateViewCnt(bid);
+        return boardDAO.getBoardContent(bid);
+    }
+
+    @Override
+    public void updateBoard(BoardVO boardVO) {
+        String cateCd = "태그";
+        boardVO.setCate_cd(cateCd);
+        boardDAO.updateBoard(boardVO);
+    }
+
+    @Override
+    public void deleteBoard(int bid) {
+        boardDAO.deleteBoard(bid);
     }
 }
