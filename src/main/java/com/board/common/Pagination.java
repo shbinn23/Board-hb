@@ -1,9 +1,8 @@
 package com.board.common;
 
 public class Pagination {
-
-    private int listSize = 10;
-    private int rangeSize = 10;
+    private int listSize = 10; // 초기값으로 목록 개수를 10으로 설정
+    private int rangeSize = 10; // 초기값으로 페이지 범위를 10으로 설정
     private int page;
     private int range;
     private int listCnt;
@@ -90,11 +89,23 @@ public class Pagination {
         this.page = page;
         this.range = range;
         this.listCnt = listCnt;
+
+        // 전체 페이지 수
         this.pageCnt = (int) Math.ceil(listCnt / listSize);
+
+        // 시작 페이지
         this.startPage = (range - 1) * rangeSize + 1;
+
+        // 끝 페이지
         this.endPage = range * rangeSize;
+
+        // 게시판 시작 번호
         this.startList = (page - 1) * listSize;
+
+        // 이전 버튼 상태
         this.prev = range == 1 ? false : true;
+
+        // 다음 버튼 상태
         this.next = endPage > pageCnt ? false : true;
 
         if (this.endPage > this.pageCnt) {
@@ -103,3 +114,4 @@ public class Pagination {
         }
     }
 }
+

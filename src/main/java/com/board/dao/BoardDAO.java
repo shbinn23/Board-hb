@@ -1,5 +1,7 @@
 package com.board.dao;
 
+import com.board.common.Pagination;
+import com.board.common.Search;
 import com.board.model.BoardVO;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -12,7 +14,14 @@ public interface BoardDAO {
      * 게시판 목록 조회 메서드
      * @return 게시판 목록
      */
-    public List<BoardVO> getBoardList();
+    public List<BoardVO> getBoardList(Search search);
+
+    /**
+     * 총 게시글 개수 확인
+     * @return
+     * @throws Exception
+     */
+    public int getBoardListCnt(Search search);
 
     /**
      * 게시글 내용 조회 메서드

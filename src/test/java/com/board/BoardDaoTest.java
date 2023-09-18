@@ -20,23 +20,23 @@ public class BoardDaoTest {
     @Autowired
     private BoardDAO boardDAO;
 
-    @Test
-    public void testGetBoardList() throws Exception {
-        // 게시판 목록 가져오기
-        List<BoardVO> boardList = boardDAO.getBoardList();
-
-        // 출력
-        System.out.println("\n Board List \n");
-
-        if (boardList.size() > 0) {
-            for (BoardVO board : boardList) {
-                System.out.println("Title: " + board.getTitle());
-            }
-        } else {
-            System.out.println("데이터가 없습니다.");
-//            주석
-        }
-    }
+//    @Test
+//    public void testGetBoardList() throws Exception {
+//        // 게시판 목록 가져오기
+//        List<BoardVO> boardList = boardDAO.getBoardList();
+//
+//        // 출력
+//        System.out.println("\n Board List \n");
+//
+//        if (boardList.size() > 0) {
+//            for (BoardVO board : boardList) {
+//                System.out.println("Title: " + board.getTitle());
+//            }
+//        } else {
+//            System.out.println("데이터가 없습니다.");
+////            주석
+//        }
+//    }
 
     @Test
     public void testGetBoardContent() throws Exception {

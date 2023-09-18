@@ -1,5 +1,7 @@
 package com.board.service;
 
+import com.board.common.Pagination;
+import com.board.common.Search;
 import com.board.dao.BoardDAO;
 import com.board.model.BoardVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +18,13 @@ public class BoardServiceImpl implements BoardService{
     private BoardDAO boardDAO;
 
     @Override
-    public List<BoardVO> getBoardList() {
-        return boardDAO.getBoardList();
+    public List<BoardVO> getBoardList(Search search) {
+        return boardDAO.getBoardList(search);
+    }
+
+    @Override
+    public int getBoardListCnt(Search search) {
+        return boardDAO.getBoardListCnt(search);
     }
 
     @Override

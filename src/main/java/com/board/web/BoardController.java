@@ -1,5 +1,7 @@
 package com.board.web;
 
+import com.board.common.Pagination;
+import com.board.common.Search;
 import com.board.model.BoardVO;
 import com.board.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +23,28 @@ public class BoardController {
      * @param model 모델 객체
      * @return 게시글 리스트 뷰 페이지 이름
      */
-    @GetMapping("/getBoardList")
-    public String getBoardList(Model model) {
-        model.addAttribute("boardList", boardService.getBoardList());
+    @RequestMapping(value = "/getBoardList", method = RequestMethod.GET)
+    public String getBoardList(Model model,
+                               @RequestParam(required = false, defaultValue = "1") int page,
+                               @RequestParam(required = false, defaultValue = "1") int range,
+                               @RequestParam(required = false, defaultValue = "title") String searchType,
+                               @RequestParam(required = false) String keyword) throws Exception {
+        Search search = new Search();
+        search.setSearchType(searchType);
+        search.setKeyword(keyword);
+
+        // 전체 게시글 수
+        int listCnt = boardService.getBoardListCnt(search);
+
+        search.pageInfo(page, range, listCnt);
+
+        model.addAttribute("pagination", search);
+        model.addAttribute("boardList", boardService.getBoardList(search));
+
         return "board/index";
     }
+
+
 
     /**
      * 글 작성 페이지를 불러옵니다.
