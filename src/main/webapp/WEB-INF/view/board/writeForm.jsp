@@ -8,14 +8,12 @@
 <html>
 <head>
     <meta charset="UTF-8">
-
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-
     <title>board</title>
+    <style>
+        .ck-editor__editable {
+            min-height: 400px;
+        }
+    </style>
 
     <script>
         $(document).on('click', '#btnSave', function(e){
@@ -54,6 +52,7 @@
 <article>
     <div class="container" role="main">
         <h2>Write Form</h2>
+        <p>Context Path : ${pageContext.request.contextPath}</p>
         <form:form name="form" id="form" role="form" modelAttribute="boardVO" method="post" action="${pageContext.request.contextPath}/board/saveBoard">
             <form:hidden path="bid" />
             <input type="hidden" name="mode" />
@@ -82,3 +81,6 @@
 </article>
 </body>
 </html>
+
+<script src="${pageContext.request.contextPath}/resources/common/js/ckeditor.js"></script>
+
