@@ -3,6 +3,7 @@ package com.board.dao;
 import com.board.common.Pagination;
 import com.board.common.Search;
 import com.board.model.BoardVO;
+import com.board.model.ReplyVO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -57,5 +58,15 @@ public interface BoardDAO {
      * @return 업데이트된 조회수
      */
     public int updateViewCnt(int bid);
+
+    // 댓글 리스트
+
+    public List<ReplyVO> getReplyList(int bid);
+
+    public int saveReply(ReplyVO replyVO);
+
+    public int updateReply(ReplyVO replyVO);
+
+    public int deleteReply(int rid);
 
 }

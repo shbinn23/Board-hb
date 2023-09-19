@@ -3,6 +3,7 @@ package com.board.web;
 import com.board.common.Pagination;
 import com.board.common.Search;
 import com.board.model.BoardVO;
+import com.board.model.ReplyVO;
 import com.board.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -90,6 +91,7 @@ public class BoardController {
     @RequestMapping(value = "/getBoardContent", method = RequestMethod.GET)
     public String getBoardContent(Model model, @RequestParam("bid") int bid) throws Exception {
         model.addAttribute("boardContent", boardService.getBoardContent(bid));
+        model.addAttribute("replyVO", new ReplyVO());
         return "board/boardContent";
     }
 
@@ -109,7 +111,7 @@ public class BoardController {
         model.addAttribute("boardContent", boardService.getBoardContent(bid));
         model.addAttribute("mode", mode);
         model.addAttribute("boardVO", new BoardVO());
-        return "board/boardForm";
+        return "board/writeForm";
     }
 
     /**
