@@ -1,4 +1,4 @@
-package com.board.common;
+package com.myapp.board.common;
 
 public class Pagination {
     private int listSize = 10; // 초기값으로 목록 개수를 10으로 설정

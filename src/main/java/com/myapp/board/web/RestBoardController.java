@@ -1,7 +1,7 @@
-package com.board.web;
+package com.myapp.board.web;
 
-import com.board.model.ReplyVO;
-import com.board.service.BoardService;
+import com.myapp.board.model.ReplyVO;
+import com.myapp.board.service.BoardService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

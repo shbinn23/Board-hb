@@ -1,9 +1,8 @@
-package com.board.dao;
+package com.myapp.board.dao;
 
-import com.board.common.Pagination;
-import com.board.common.Search;
-import com.board.model.BoardVO;
-import com.board.model.ReplyVO;
+import com.myapp.board.common.Search;
+import com.myapp.board.model.BoardVO;
+import com.myapp.board.model.ReplyVO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

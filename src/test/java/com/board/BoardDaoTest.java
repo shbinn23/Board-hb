@@ -1,16 +1,12 @@
 package com.board;
 
-import com.board.dao.BoardDAO;
-import com.board.model.BoardVO;
-import org.junit.jupiter.api.BeforeEach;
+import com.myapp.board.dao.BoardDAO;
+import com.myapp.board.model.BoardVO;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.slf4j.spi.LoggerFactoryBinder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.List;
 
 @SpringBootTest
 public class BoardDaoTest {

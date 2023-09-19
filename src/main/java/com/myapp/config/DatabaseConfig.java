@@ -1,4 +1,4 @@
-package com.board.config;
+package com.myapp.config;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;

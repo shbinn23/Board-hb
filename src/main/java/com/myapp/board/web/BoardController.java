@@ -1,10 +1,9 @@
-package com.board.web;
+package com.myapp.board.web;
 
-import com.board.common.Pagination;
-import com.board.common.Search;
-import com.board.model.BoardVO;
-import com.board.model.ReplyVO;
-import com.board.service.BoardService;
+import com.myapp.board.common.Search;
+import com.myapp.board.model.BoardVO;
+import com.myapp.board.model.ReplyVO;
+import com.myapp.board.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -1,14 +1,11 @@
-package com.board.service;
+package com.myapp.board.service;
 
-import com.board.common.Pagination;
-import com.board.common.Search;
-import com.board.model.BoardVO;
-import com.board.model.ReplyVO;
+import com.myapp.board.common.Search;
+import com.myapp.board.model.BoardVO;
+import com.myapp.board.model.ReplyVO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 @Service
 public interface BoardService {

@@ -1,4 +1,4 @@
-package com.board.common;
+package com.myapp.board.common;
 
 public class Search extends Pagination {
 
