@@ -7,9 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -21,20 +19,17 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/getUserList", method = RequestMethod.GET)
+    @GetMapping("/getUserList")
     public String getUserList(Model model) throws Exception{
-        logger.info("getUserList()....");
 
         model.addAttribute("userList", userService.getUserList());
-
         return "user/userList";
     }
 
-    @RequestMapping(value = "/insertUser", method = RequestMethod.POST)
-    public String insertUser(@ModelAttribute("userVO") UserVO userVO
-            , RedirectAttributes rttr) throws Exception {
-        userService.insertUser(userVO);
+    @PostMapping("/insertUser")
+    public String insertUser(@ModelAttribute("userVO") UserVO userVO, RedirectAttributes rttr) throws Exception {
 
+        userService.insertUser(userVO);
         return "redirect:/user/getUserList";
     }
 
