@@ -15,7 +15,7 @@
         ORDER BY SORT_NUM DESC, CODE ASC
     </select>
 
-    <insert id="insertMenu" parameterType="com.myapp.menu.model.MenuVO">
+    <insert id="saveMenu" parameterType="com.myapp.menu.model.MenuVO">
         INSERT INTO TBL_MENU (CODE, CODENAME, SORT_NUM, COMMENT, REG_ID, REG_DT)
         VALUES (
                    #{code},

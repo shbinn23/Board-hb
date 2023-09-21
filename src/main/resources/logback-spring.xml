@@ -16,10 +16,18 @@
         </encoder>
     </appender>
 
-    <!-- Logger -->
-    <logger name="com.study" level="DEBUG" appender-ref="console" />
-    <logger name="jdbc.sqlonly" level="INFO" appender-ref="console-infolog" />
-    <logger name="jdbc.resultsettable" level="INFO" appender-ref="console-infolog" />
+    <!-- Logger for com.study package -->
+    <logger name="com.study" level="DEBUG" additivity="false">
+        <appender-ref ref="console" />
+    </logger>
+
+    <!-- Logger for log4jdbc-log4j2 -->
+    <logger name="jdbc.sqlonly" level="INFO">
+        <appender-ref ref="console-infolog" />
+    </logger>
+    <logger name="jdbc.resultsettable" level="INFO">
+        <appender-ref ref="console-infolog" />
+    </logger>
 
     <!-- Root Logger -->
     <root level="off">

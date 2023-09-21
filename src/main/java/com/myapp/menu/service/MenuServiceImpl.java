@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class menuServiceImpl implements menuService {
+public class MenuServiceImpl implements MenuService {
 
     @Autowired
     private MenuDAO menuDAO;

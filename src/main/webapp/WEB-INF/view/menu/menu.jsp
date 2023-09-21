@@ -1,35 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<jsp:include page="/WEB-INF/view/layout/header.jsp" />
+<%@ include file="/WEB-INF/view/layout/header.jsp" %>
 
 <c:url var="saveURL" value="/restMenu/saveMenu"></c:url>
 <c:url var="deleteURL" value="/restMenu/deleteMenu"></c:url>
 <c:url var="updateURL" value="/restMenu/updateMenu"></c:url>
 <c:url var="getMenuListURL" value="/restMenu/getMenuList"></c:url>
 
-
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-
     <title>Menu List</title>
-
     <script>
-
     </script>
-
     <style>
-        #paginationBox{
-            padding : 10px 0px;
+        #paginationBox {
+            padding: 10px 0px;
         }
     </style>
-
 </head>
 
 <script>
-    $(function () {
+    $(function() {
         fn_showList();
     });
 
@@ -41,19 +35,18 @@
             type: "POST",
             dataType: "json",
             data: paramData,
-            success: function (result) {
+            success: function(result) {
                 console.log(result);
 
-                if (result.status === "OK") {
+                if (result.status == "OK") {
                     if (result.menuList.length > 0) {
                         var list = result.menuList;
                         var htmls = "";
-
-                        result.menuList.forEach(function (e) {
+                        result.menuList.forEach(function(e) {
                             htmls += '<tr>';
                             htmls += '<td>' + e.mid + '</td>';
                             htmls += '<td>';
-                            htmls += '<a href="#" onClick="fn_menuInfo(' + e.mid + ', \'' + e.code + '\', \'' + e.codename + '\', ' + e.sort_num + ', \'' + e.comment + '\')">';
+                            htmls += '<a href="#" onClick="fn_menuInfo(' + e.mid + ',\'' + e.code +'\',\'' + e.codename + '\', ' + e.sort_num + ', \'' + e.comment + '\')" >';
                             htmls += e.code;
                             htmls += '</a>';
                             htmls += '</td>';
@@ -68,69 +61,44 @@
                 }
 
                 $('#menuList').html(htmls);
+
             }
         });
     }
 
-    $(document).on('click', '#btnSave', function(e) {
+    $(document).on('click', '#btnSave', function(e){
         e.preventDefault();
 
-        // 기본 저장 URL
         var url = "${saveURL}";
 
-        // 리스트를 클릭하면 리스트의 정보가 설정되므로 mid 값을 확인하여 수정 URL로 변경
+        // 리스트를 클릭하게 되면 리스트의 정보가 셋팅이 되므로 mid의 값을 확인 할 수 있습니다.
+        // 값이 있다는 것은 데이터를 수정하겠다는 의미 이므로 입력 url을 수정 url로 변경하여 줍니다.
         if ($("#mid").val() != 0) {
-            url = "${updateURL}";
+            var url = "${updateURL}";
         }
 
         var paramData = {
-            "code": $("#code").val(),
-            "codename": $("#codename").val(),
-            "sort_num": $("#sort_num").val(),
-            "comment": $("#comment").val()
+            "code" : $("#code").val()
+            , "codename" : $("#codename").val()
+            , "sort_num" : $("#sort_num").val()
+            , "comment" : $("#comment").val()
         };
 
         $.ajax({
-            url: url,
-            type: "POST",
-            dataType: "json",
-            data: paramData,
-            success: function(result) {
+            url : url
+            , type : "POST"
+            , dataType :  "json"
+            , data : paramData
+            , success : function(result){
+
                 fn_showList();
-                $("#btnInit").trigger("click");
-            }
-        });
-    });
-
-    $(document).on('click', '#btnSave', function (e) {
-        // 이벤트 기본 동작 취소
-        e.preventDefault();
-
-        var url = "${saveURL}";
-
-        var paramData = {
-            "code": $("#code").val(),
-            "codename": $("#codename").val(),
-            "sort_num": $("#sort_num").val(),
-            "comment": $("#comment").val()
-        };
-
-        $.ajax({
-            url: url,
-            type: "POST",
-            dataType: "json",
-            data: paramData,
-            success: function (result) {
-                fn_showList();
-
-                // 초기화 이벤트 호출
                 $("#btnInit").trigger("click");
             }
         });
     });
 
     // 초기화 버튼 이벤트 부분 추가
-    $(document).on('click', '#btnInit', function (e) {
+    $(document).on('click', '#btnInit', function(e) {
         $('#mid').val('');
         $('#code').val('');
         $('#codename').val('');
@@ -138,6 +106,7 @@
         $('#comment').val('');
     });
 
+    //메뉴 정보 셋
     function fn_menuInfo(mid, code, codename, sort_num, comment) {
         $("#mid").val(mid);
         $("#code").val(code);
@@ -145,16 +114,14 @@
         $("#sort_num").val(sort_num);
         $("#comment").val(comment);
 
-        // 코드 부분 읽기 모드로 전환
+        //코드 부분 읽기 모드로 전환
         $("#code").attr("readonly", true);
     }
 
-    $(document).on('click', '#btnDelete', function(e) {
+    $(document).on('click', '#btnDelete', function(e){
         e.preventDefault();
 
-        var code = $("#code").val();
-
-        if (!code) {
+        if ($("#code").val() == "") {
             alert("삭제할 코드를 선택해 주세요.");
             return;
         }
@@ -162,21 +129,26 @@
         var url = "${deleteURL}";
 
         var paramData = {
-            "code": code
+            "code" : $("#code").val()
         };
 
         $.ajax({
-            url: url,
-            type: "POST",
-            dataType: "json",
-            data: paramData,
-            success: function(result) {
+            url : url
+            , type : "POST"
+            , dataType :  "json"
+            , data : paramData
+            , success : function(result){
                 fn_showList();
+
+                //삭제 후 셋팅값 초기
                 $("#btnInit").trigger("click");
             }
         });
+
     });
+
 </script>
+
 <body>
 <article>
     <div class="container">
@@ -184,13 +156,14 @@
         <!-- Menu form {s} -->
         <h4 class="mb-3">Menu Info</h4>
         <div>
-            <form:form name="form" id="form" role="form" modelAttribute="menuVO" method="post" action="${pageContext.request.contextPath}/menu/saveMenu">
-                <form:hidden path="mid" id="mid"/>
+            <form:form name="form" id="form" role="form" modelAttribute="menuVO" method="post"
+                       action="${pageContext.request.contextPath}/menu/saveMenu">
+                <form:hidden path="mid" id="mid" />
 
                 <div class="row">
                     <div class="col-md-4 mb-3">
                         <label for="code">Code</label>
-                        <form:input path="code" id="code" class="form-control"  placeholder="" value="" required="" />
+                        <form:input path="code" id="code" class="form-control" placeholder="" value="" required="" />
                         <div class="invalid-feedback">
                             Valid Code is required.
                         </div>
@@ -225,17 +198,17 @@
             <button type="button" class="btn btn-sm btn-primary" id="btnInit">초기화</button>
         </div>
 
-        <h4 class="mb-3" style="padding-top:15px">Menu List</h4>
+        <h4 class="mb-3" style="padding-top: 15px">Menu List</h4>
 
         <!-- List{s} -->
         <div class="table-responsive">
             <table class="table table-striped table-sm">
                 <colgroup>
-                    <col style="width:10%;" />
-                    <col style="width:15%;" />
-                    <col style="width:15%;" />
-                    <col style="width:10%;" />
-                    <col style="width:auto;" />
+                    <col style="width: 10%;" />
+                    <col style="width: 15%;" />
+                    <col style="width: 15%;" />
+                    <col style="width: 10%;" />
+                    <col style="width: auto;" />
                 </colgroup>
                 <thead>
                 <tr>
@@ -251,7 +224,6 @@
             </table>
         </div>
         <!-- List{e} -->
-
 
     </div>
 </article>

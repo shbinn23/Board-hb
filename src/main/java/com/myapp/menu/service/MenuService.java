@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public interface menuService {
+public interface MenuService {
 
     public List<MenuVO> getMenuList();
 

@@ -63,12 +63,6 @@
         }
     </style>
 
-    <script>
-        function fn_btnSignupClick(){
-            location.href ="${pageContext.request.contextPath}/user/signupForm";
-        }
-    </script>
-
 </head>
 <body>
 <div class="login-container">
@@ -82,7 +76,7 @@
         </div>
         <button type="submit" class="login-button">Log In</button>
     </form>
-    <p class="signup-link">Don't have an account? <a href="/signup">Sign up</a></p>
+    <p class="signup-link">Don't have an account? <a href="${pageContext.request.contextPath}/login/sign">Sign up</a></p>
 </div>
 </body>
 </html>
