@@ -12,6 +12,44 @@
     <c:url var="updateReplyURL" value="/restBoard/updateReply"></c:url>
     <c:url var="deleteReplyURL" value="/restBoard/deleteReply"></c:url>
 
+<%--    <style>--%>
+<%--        body {--%>
+<%--            font-family: Arial, sans-serif;--%>
+<%--        }--%>
+
+<%--        .container {--%>
+<%--            background-color: #f8f9fa;--%>
+<%--            padding: 20px;--%>
+<%--            border-radius: 10px;--%>
+<%--        }--%>
+
+<%--        .board_title {--%>
+<%--            font-size: 24px;--%>
+<%--            font-weight: bold;--%>
+<%--            margin-bottom: 10px;--%>
+<%--        }--%>
+
+<%--        .board_info_box {--%>
+<%--            font-size: 14px;--%>
+<%--            color: #6c757d;--%>
+<%--        }--%>
+
+<%--        .board_content {--%>
+<%--            margin-top: 20px;--%>
+<%--            font-size: 16px;--%>
+<%--        }--%>
+
+<%--        .board_tag {--%>
+<%--            margin-top: 10px;--%>
+<%--            font-size: 14px;--%>
+<%--            color: #007bff;--%>
+<%--        }--%>
+
+<%--        .btn-group {--%>
+<%--            margin-top: 20px;--%>
+<%--        }--%>
+<%--    </style>--%>
+
 <script>
 
     // 목록으로 이동
@@ -183,48 +221,42 @@
 </script>
 </head>
 <body>
-<article>
-    <div class="container" role="main">
-        <h2>board Content</h2>
-        <div class="bg-white rounded shadow-sm">
-            <div class="board_title"><c:out value="${boardContent.title}"/></div>
-            <div class="board_info_box">
-                <span class="board_author"><c:out value="${boardContent.reg_id}"/>,</span><span class="board_date"><c:out value="${boardContent.reg_dt}"/></span>
-            </div>
-            <div class="board_content">${boardContent.content}</div>
-            <div class="board_tag">TAG : <c:out value="${boardContent.tag}"/></div>
+<div class="container mt-4">
+    <h2 class="mb-4">자유게시판</h2>
+    <div class="bg-white rounded shadow p-4">
+        <h3 class="board_title"><c:out value="${boardContent.title}" /></h3>
+        <div class="board_info_box">
+            <span class="board_author"><c:out value="${boardContent.reg_id}" /></span>,
+            <span class="board_date"><c:out value="${boardContent.reg_dt}" /></span>
         </div>
-        <div style="margin-top : 20px">
-            <button type="button" class="btn btn-sm btn-primary" id="btnUpdate">수정</button>
-            <button type="button" class="btn btn-sm btn-primary" id="btnDelete">삭제</button>
-            <button type="button" class="btn btn-sm btn-primary" id="btnList">목록</button>
+        <div class="board_content">${boardContent.content}</div>
+        <div class="board_tag">TAG: <c:out value="${boardContent.tag}" /></div>
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary" id="btnUpdate">수정</button>
+            <button type="button" class="btn btn-danger" id="btnDelete">삭제</button>
+            <button type="button" class="btn btn-secondary" id="btnList">목록</button>
         </div>
-
-        <!-- Reply Form {s} -->
-        <div class="my-3 p-3 bg-white rounded shadow-sm" style="padding-top: 10px">
-            <form:form name="form" id="form" role="form" modelAttribute="replyVO" method="post">
-                <form:hidden path="bid" id="bid" />
-                <div class="row">
-                    <div class="col-sm-10">
-                        <form:textarea path="content" id="content" class="form-control" rows="3" placeholder="댓글을 입력해 주세요"></form:textarea>
-                    </div>
-                    <div class="col-sm-2">
-                        <form:input path="reg_id" class="form-control" id="reg_id" placeholder="댓글 작성자"></form:input>
-                        <button type="button" class="btn btn-sm btn-primary" id="btnReplySave" style="width: 100%; margin-top: 10px">저장</button>
-                    </div>
-                </div>
-            </form:form>
-        </div>
-        <!-- Reply Form {e} -->
-
-        <!-- Reply List {s} -->
-        <div class="my-3 p-3 bg-white rounded shadow-sm" style="padding-top: 10px">
-            <h6 class="border-bottom pb-2 mb-0">Reply list</h6>
-            <div id="replyList"></div>
-        </div>
-        <!-- Reply List {e} -->
-
     </div>
-</article>
+
+    <div class="my-4 p-4 bg-white rounded shadow">
+        <h4 class="border-bottom pb-2 mb-4">Reply List</h4>
+        <div id="replyList" style="margin-bottom: 20px;"></div>
+
+        <!-- Reply Form -->
+        <form:form name="form" id="form" role="form" modelAttribute="replyVO" method="post">
+            <form:hidden path="bid" id="bid" />
+            <div class="row">
+                <div class="col-md-10">
+                    <form:textarea path="content" id="content" class="form-control" rows="3"
+                                   placeholder="댓글을 입력해 주세요"></form:textarea>
+                </div>
+                <div class="col-md-2">
+                    <form:input path="reg_id" class="form-control mb-3" id="reg_id" placeholder="댓글 작성자"></form:input>
+                    <button type="button" class="btn btn-primary" id="btnReplySave" style="width: 100%;">저장</button>
+                </div>
+            </div>
+        </form:form>
+    </div>
+</div>
 </body>
 </html>
