@@ -67,16 +67,17 @@
 <body>
 <div class="login-container">
     <div class="login-logo"></div>
-    <form action="/login/process" method="post">
+    <form action="${pageContext.request.contextPath}/login/login" method="post">
         <div class="form-group">
-            <input type="text" class="form-control" name="username" placeholder="Username" required>
+            <input type="text" class="form-control" name="uid" placeholder="Username" required>
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" name="password" placeholder="Password" required>
+            <input type="password" class="form-control" name="pwd" placeholder="Password" required>
         </div>
         <button type="submit" class="login-button">Log In</button>
     </form>
-    <p class="signup-link">Don't have an account? <a href="${pageContext.request.contextPath}/login/sign">Sign up</a></p>
+    <p class="signup-link">Don't have an account? <a href="${pageContext.request.contextPath}/login/signupForm">Sign up</a></p>
 </div>
 </body>
+
 </html>

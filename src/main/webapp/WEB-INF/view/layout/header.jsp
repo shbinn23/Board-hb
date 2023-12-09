@@ -23,6 +23,9 @@
             </form>
             <ul class="navbar-nav ml-2">
                 <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/expense/expenseForm">가계부</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/board/getBoardList">게시판</a>
                 </li>
                 <li class="nav-item">
