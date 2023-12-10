@@ -26,6 +26,9 @@
                     <a class="nav-link" href="${pageContext.request.contextPath}/expense/expenseForm">가계부</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/book/bookForm">도서리스트</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/board/getBoardList">게시판</a>
                 </li>
                 <li class="nav-item">

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myapp.book.dao.BookDAO">
+
+    <resultMap id="bookResultMap" type="com.myapp.book.model.BookVO">
+        <id property="id" column="id" />
+        <result property="title" column="title" />
+        <result property="author" column="author" />
+        <result property="recommendation" column="recommendation" />
+        <result property="rating" column="rating" />
+        <result property="createdAt" column="created_at" />
+    </resultMap>
+
+    <select id="getBookList" resultMap="bookResultMap">
+        SELECT * FROM tbl_book
+    </select>
+
+    <insert id="insertBook" parameterType="com.myapp.book.model.BookVO">
+        INSERT INTO tbl_book (title, author, recommendation, rating)
+        VALUES (#{title}, #{author}, #{recommendation}, #{rating})
+    </insert>
+
+</mapper>
